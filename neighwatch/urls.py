@@ -17,11 +17,15 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from . import views as project_views
 
 urlpatterns = [
     url(r'^$', project_views.landing, name='landing'),
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/login/$', auth_views.login, name='login'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', auth_views.logout, {"next_page": '/'}),
     # url(r'^new/'), include('burbnews.urls'),
 ]
 
