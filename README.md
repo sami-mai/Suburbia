@@ -1,5 +1,5 @@
 # SUBURBIA
-## A web application that allows you to be in the loop about everything happening in your neighbourhood, from contact information of different handyman to meeting announcements or even alerts.
+### A web application that allows you to be in the loop about everything happening in your neighbourhood, from contact information of different handyman to meeting announcements or even alerts.
 
 
 ## By **[Samirah Maison](https://github.com/sami-mai)**
