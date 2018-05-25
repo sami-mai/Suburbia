@@ -5,7 +5,7 @@
 ## By **[Samirah Maison](https://github.com/sami-mai)**
 
 ## Description
-[This](https://news-suburbia.herokuapp.com/)A web application that allows you to be in the loop about everything happening in your neighbourhood, from contact information of different handyman to meeting announcements or even alerts. Built using Django 1.11.
+[This](https://news-suburbia.herokuapp.com/) is a web application that allows you to be in the loop about everything happening in your neighbourhood, from contact information of different handyman to meeting announcements or even alerts. Built using Django 1.11.
 
 ## User Stories
 * Sign in with the application to start using.
