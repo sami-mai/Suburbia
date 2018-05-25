@@ -18,7 +18,7 @@
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="/">
-              <img src="{% static '/images/download.png' %}" width="30" height="30" alt="icon"><span></span>
+              <img class="img-circle" src="{% static '/images/download.png' %}" width="30" height="30" alt="icon"><span></span>
             </a>
             <a class="navbar-brand" href="/" style="font-family: 'Cookie', cursive;"><strong>Suburbia</strong></a>
           </div>
@@ -34,7 +34,7 @@
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
 
               </ul>
               <!-- Adding a search form  -->
@@ -55,8 +55,8 @@
 
               {% else %}
               <ul class="nav navbar-nav navbar-right ">
-                <li><a href="#">Sign in</a></li>
-                <li><a href="#">Sign up</a></li>
+                <li><a href="/accounts/login">Sign in</a></li>
+                <li><a href="/accounts/register">Sign up</a></li>
               </ul>
 
 
