@@ -26,7 +26,8 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', auth_views.logout, {"next_page": '/'}),
-    # url(r'^new/'), include('burbnews.urls'),
+    url(r'^news/', include('burbnews.urls')),
+    url(r'^suburb/', include('suburb.urls')),
 ]
 
 if settings.DEBUG:
