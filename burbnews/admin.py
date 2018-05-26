@@ -1,3 +1,10 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+class TopicMemberInline(admin.TabularInline):
+    model = models.TopicMember
+
+
+admin.site.register(models.Topic)
+admin.site.register(models.Post)
