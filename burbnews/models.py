@@ -26,7 +26,7 @@ class Topic(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("topics:single", kwargs={"slug": self.slug})
+        return reverse("single_topic", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["name"]
@@ -60,7 +60,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            "posts:single",
+            "single_post",
             kwargs={
                 "username": self.user.username,
                 "pk": self.pk
