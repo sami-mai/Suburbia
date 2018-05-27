@@ -1,0 +1,24 @@
+{% extends "burbnews/topic_base.html" %} {% block pretopic %}
+
+
+<h1>{{topic.name}}</h1>
+<h2> Member Count: {{topic.members.count}}</h2>
+
+<div class="content">
+
+
+  {% if user in topic.members.all %}
+  <a href="{% url 'leave_topic' slug=topic.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-remove-circle"></span> Leave</a> {% else %}
+  <a href="{% url 'join_topic' slug=topic.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> Join</a> {% endif %}
+
+
+
+</div>
+
+{% endblock %} {% block topic_content %}
+
+<div class="col-md-8">
+  {% if topic.posts.count == 0 %}
+  <h2>No posts in this topic yet!</h2> {% else %} {% for post in topic.posts.all %} {% include "burbnews/_post.html" %} {% endfor %} {% endif %}
+</div>
+{% endblock %}
