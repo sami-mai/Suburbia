@@ -8,8 +8,7 @@ from django.db import IntegrityError
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-# from .forms import
-from .models import Topic, TopicMember
+from burbnews.models import Topic, TopicMember
 from . import models
 from . import forms
 
@@ -43,7 +42,7 @@ class ListTopics(generic.ListView):
 class JoinTopic(LoginRequiredMixin, generic.RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse("topics:single", kwargs={"slug": self.kwargs.get("slug")})
+        return reverse("single_topic", kwargs={"slug": self.kwargs.get("slug")})
 
     def get(self, request, *args, **kwargs):
         topic = get_object_or_404(Topic, slug=self.kwargs.get("slug"))
@@ -63,7 +62,7 @@ class JoinTopic(LoginRequiredMixin, generic.RedirectView):
 class LeaveTopic(LoginRequiredMixin, generic.RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse("topics:single", kwargs={"slug": self.kwargs.get("slug")})
+        return reverse("single_topic", kwargs={"slug": self.kwargs.get("slug")})
 
     def get(self, request, *args, **kwargs):
 
@@ -95,7 +94,7 @@ class PostList(SelectRelatedMixin, generic.ListView):
 
 class UserPosts(generic.ListView):
     model = models.Post
-    template_name = "posts/user_post_list.html"
+    template_name = "burbnews/user_post_list.html"
 
     def get_queryset(self):
         try:
@@ -144,7 +143,7 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
     select_related = ("user", "topic")
-    success_url = reverse_lazy("posts:all")
+    success_url = reverse_lazy("all_posts")
 
     def get_queryset(self):
         queryset = super().get_queryset()
