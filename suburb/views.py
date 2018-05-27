@@ -5,14 +5,15 @@ from burbnews.models import Topic
 from django.utils import timezone
 from django.contrib.gis.geos import Point
 from django.contrib.gis.db.models.functions import Distance
-from django.template import RequestContext
+# from django.template import RequestContext
 
 
 class LookupView(FormView):
     form_class = LookupForm
 
     def get(self, request):
-        return render_to_response('suburb/lookup.html', RequestContext(request))
+        form_class = LookupForm
+        return render_to_response('suburb/lookup.html', {"form_class": form_class})
 
     def form_valid(self, form):
         # Get data
