@@ -28,8 +28,9 @@
             <div class=" ">
               {% if user.is_authenticated %}
               <ul class="nav navbar-nav">
-                <li><a href="#">Posts</a></li>
-                <li><a href="#">Topics</a></li>
+                <li><a href="{% url 'create_post' %}">Post</a></li>
+                <li><a href="{% url 'all_topics' %}">Topics</a></li>
+                <li><a href="{% url 'create_topic' %}">Create Topic</a></li>
 
               </ul>
 
@@ -38,7 +39,7 @@
 
               </ul>
               <!-- Adding a search form  -->
-              <div class="navbar-right pull-right">
+              <!-- <div class="navbar-right pull-right">
 
                 <form class="navbar-form" role="search" action="#">
 
@@ -50,7 +51,7 @@
                   </div>
 
                 </form>
-              </div>
+              </div> -->
               <!-- search form end -->
 
               {% else %}

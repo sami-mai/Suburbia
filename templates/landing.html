@@ -3,9 +3,14 @@
 {% block content %}
 <div class="container-fluid text-center">
   <div class="jumbotron">
+    {% if user.is_authenticated%}
+    <h1>Welcome {{user.username}} to Suburbia Media!</h1>
+    <h2 class="text-muted">The best medium for all things Suburbia!</h2>
+    <!--  -->
+    {% else %}
     <h1>Welcome to Suburbia News!</h1>
     <h2 class="text-muted">The best medium for all things Suburbia!</h2>
-    <h2 class="text-muted">Login or Sign-up for free to get started!</h2>
+    <h2 class="text-muted">Login or Sign-up for free to get started!</h2> {% endif %}
   </div>
 
 </div>
