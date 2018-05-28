@@ -1,0 +1,7 @@
+<div class="list-group">
+  <a href="/" class="list-group-item ">My Suburb</a>
+  <a href="{%url 'edit_profile' request.user.id%}" class="list-group-item ">Profile</a>
+  <a href="{% url 'all_topics' %}" class="list-group-item ">Topics</a>
+  <a href="{% url 'all_posts' %}" class="list-group-item">Posts</a>
+
+</div>
