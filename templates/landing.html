@@ -1,11 +1,14 @@
-{%extends 'base.html'%}{% load bootstrap3 %}{% load static%}
+{%extends 'base.html'%}{% load bootstrap3 %}{% load staticfiles%}
 <!--  -->
 {% block content %}
+<br>
 <div class="container-fluid text-center">
   <div class="jumbotron">
     {% if user.is_authenticated%}
     <h1>Welcome {{user.username}} to Suburbia Media!</h1>
-    <h2 class="text-muted">The best medium for all things Suburbia!</h2>
+    <h2 class="text-muted">The best medium for all things Suburbia!</h2> {%if resident.avatar%}
+    <h2>Hi again!</h2> {%else%}
+    <a href="{% url 'edit_profile' request.user.id%}" class="btn btn-primary">Start here</a> {%endif%}
     <!--  -->
     {% else %}
     <h1>Welcome to Suburbia News!</h1>
@@ -14,7 +17,9 @@
   </div>
 
 </div>
-
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
 <!--  -->
 {%endblock%}
 <!--  -->

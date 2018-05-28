@@ -28,18 +28,26 @@
             <div class=" ">
               {% if user.is_authenticated %}
               <ul class="nav navbar-nav">
-                <li><a href="{% url 'create_post' %}">Post</a></li>
-                <li><a href="{% url 'all_topics' %}">Topics</a></li>
-                <li><a href="{% url 'create_topic' %}">Create Topic</a></li>
 
-              </ul>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Topics<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'create_topic' %}">Create Topic</a></li>
+                    <li><a href="{% url 'all_topics' %}">All Topics</a></li>
 
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="/logout">Logout</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'create_post' %}">Create Post</a></li>
+                    <li><a href="{% url 'all_posts' %}">All Posts</a></li>
 
+                  </ul>
+                </li>
               </ul>
               <!-- Adding a search form  -->
-              <!-- <div class="navbar-right pull-right">
+              <div class="navbar-right pull-right">
 
                 <form class="navbar-form" role="search" action="#">
 
@@ -51,8 +59,36 @@
                   </div>
 
                 </form>
-              </div> -->
+              </div>
               <!-- search form end -->
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+
+                    <li class=text-center text-muted><strong>@{{user.username }}</strong></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'edit_profile' request.user.id%}">Edit Profile</a></li>
+                    <li>
+                      <a href="{% url 'for_user' username=user.username %}">Your profile</a>
+                    </li>
+                    <li>
+                      <a href="#">Your Posts</a>
+                    </li>
+                    <li>
+                      <a href="#">Your Topics</a>
+                    </li>
+                    <li>
+                      <a href="/accounts/password/change">Change Password</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                      <a href="/logout">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
 
               {% else %}
               <ul class="nav navbar-nav navbar-right ">

@@ -1,8 +1,8 @@
 {% extends "burbnews/topic_base.html" %} {% block pretopic %}
 
 
-<h1>{{topic.name}}</h1>
-<h2> Member Count: {{topic.members.count}}</h2>
+<h1 style="color:white;">{{topic.name}}</h1>
+<h2 style="color:white;"> Member Count: {{topic.members.count}}</h2>
 
 <div class="content">
 
@@ -19,6 +19,7 @@
 
 <div class="col-md-8">
   {% if topic.posts.count == 0 %}
-  <h2>No posts in this topic yet!</h2> {% else %} {% for post in topic.posts.all %} {% include "burbnews/_post.html" %} {% endfor %} {% endif %}
+  <h2 style="color:white;">No posts in this topic yet!</h2> {% else %} {% for post in topic.posts.all %} {% include "burbnews/_post.html" %} {% endfor %} {% endif %}
 </div>
-{% endblock %}
+<br><br><br><br><br>
+<br><br><br><br><br><br> {% endblock %}

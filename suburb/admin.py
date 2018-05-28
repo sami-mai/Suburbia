@@ -12,7 +12,7 @@ class CustomPointWidget(PointWidget, BaseGMapWidget):
 class SuburbAdminForm(ModelForm):
     class Meta:
         model = models.Suburb
-        fields = ['name', 'location']
+        fields = ['suburb_name', 'latitude', 'longitude']
         widgets = {
             'location': CustomPointWidget()
         }

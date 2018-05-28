@@ -1,7 +1,7 @@
 <div class="post media">
 	<h3>{{ post.message_html|safe }}</h3>
 	<div class="media-body">
-		<strong>{{ post.user.username }}</strong>
+		<strong>@{{ post.user.username }}</strong>
 		<br>
 		<h5 class="media-heading">
 			<span class="username"><a href="{% url 'for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
@@ -10,9 +10,6 @@
 			<span class="topic-name">in <a href="#">{{ post.topic.name }}</a></span>
 			{% endif %}
 		</h5>
-
-
-
 
 		<div class="media-footer">
 			{% if user.is_authenticated and post.user == user and not hide_delete %}

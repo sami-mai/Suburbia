@@ -2,7 +2,7 @@
 <!--  -->
 {% load static%}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" style="background: #191063;">
 
 <head>
   <meta charset="utf-8">
@@ -20,12 +20,12 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
   <!--  -->
   {% endblock %}
 </head>
 
-<body>
+<body style="background: #191063;">
   {% include "navbar.html" %}
   <!--  -->
   {% block content %}
@@ -34,8 +34,8 @@
   </div>
   {%endblock%}
   <!-- FOOTER -->
-  <hr>
-  <div class="container-fluid">
+  <!-- <hr> -->
+  <div class="container-fluid" style="background: white; padding:20px;">
 
     <footer>
       <!-- <p class="pull-right"><a href="/">Back to top</a></p> -->

@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'bootstrap3',
     'tinymce',
-    'burbnews',
     'suburb',
+    'burbnews',
     'floppyforms',
 
 ]

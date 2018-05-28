@@ -1,12 +1,25 @@
-{% extends "burbnews/post_base.html" %} {% block prepost %}
-<div class="col-md-4">
-	<h1>@{{ request.user.username }}</h1>
+{% extends "burbnews/post_base.html" %}
+<!--  -->
+{% block prepost %}
+<br>
+<div class="container jumbotron">
+	<div class="col-md-4" style="border-right:solid;">
 
+		{% if user.is_authenticated %}
+		<h2>
+			<a href="{% url 'for_user' username=user.username %}">@{{user.username }}</a>
+		</h2> {% endif %}
+	</div>
+
+	{% endblock %} {% block post_content %}
+	<div class="col-md-8">
+		<h3>Post History</h3> {% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
+		<p>You have no posts</p>
+		{% endfor %}
+	</div>
 </div>
-{% endblock %} {% block post_content %}
-<div class="col-md-8">
-	<h3>Post History</h3> {% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
-	<p>You have no posts</p>
-	{% endfor %}
-</div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br><br>
+<!--  -->
 {% endblock %}

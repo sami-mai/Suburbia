@@ -16,6 +16,7 @@ class Topic(models.Model):
     description_html = models.TextField(editable=False, default='', blank=True)
     members = models.ManyToManyField(User, through="TopicMember")
     datetime = models.DateTimeField(auto_now=True)
+    suburb = models.ForeignKey(Suburb, related_name="local", default='', null=True)
 
     def __str__(self):
         return self.name
@@ -33,9 +34,9 @@ class Topic(models.Model):
 
 
 class TopicMember(models.Model):
-    topic = models.ForeignKey(Topic, related_name="memberships")
-    user = models.ForeignKey(User, related_name='user_topics')
-    suburb = models.ForeignKey(Suburb, related_name="residents")
+    topic = models.ForeignKey(Topic, related_name="memberships", null=True)
+    user = models.ForeignKey(User, related_name='user_topics', null=True)
+    suburb = models.ForeignKey(Suburb, related_name="residents", null=True)
 
     def __str__(self):
         return self.user.username
@@ -45,7 +46,8 @@ class TopicMember(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, related_name="posts")
+    user = models.ForeignKey(User, related_name="posts", null=True)
+    image = models.ImageField(upload_to='post_image/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
     message = models.TextField()
     message_html = models.TextField(editable=False)

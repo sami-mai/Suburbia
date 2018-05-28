@@ -1,42 +1,54 @@
 {% extends "burbnews/post_base.html" %} {% load humanize %}
 <!--  -->
 {% block prepost %}
-<div class="col-md-4">
+<br>
+<div class="container jumbotron">
+	<div class="col-md-4" style="border-right:solid;">
+		{% if request.user.is_authenticated %}
+		<div class="card card-with-shadow">
+			<div class="content">
+				<!-- <h3>
+				<a href="{% url 'for_user' username=user.username %}">@{{user.username }}</a>
+			</h3> -->
+				<h2 class="title">Your Topics</h2>
+				<ul class="list-unstyled">
+					{# {% get_user_topics as user_topics %}#} {% for member_topic in get_user_topics %}
+					<li class="topic li-with-bullet">
+						<a href="{% url 'single_topic' slug=member_topic.topic.slug %}">{{ member_topic.topic.name }}</a>
+					</li>
+
+					<!--  -->
+					{% endfor %}
+
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		<div class="card card-with-shadow">
+			<div class="content">
+				<h5 class="title">All topics</h5>
+				<ul class="list-unstyled">
+					{# {% get_other_topics as other_topics %}#} {% for other_topic in get_other_topics %}
+					<li class="topic li-with-bullet"><a href="{% url 'single_topic' slug=other_topic.slug %}">{{ other_topic.name }}</a></li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
+	<!--  -->
+	{% block post_content %}
+	<!--  -->
 	{% if request.user.is_authenticated %}
-	<div class="card card-with-shadow">
-		<div class="content">
-			<h5 class="title">Your Topics</h5>
-			<ul class="list-unstyled">
-				{# {% get_user_topics as user_topics %}#} {% for member_topic in get_user_topics %}
-				<li class="topic li-with-bullet">
-					<a href="{% url 'single_topic' slug=member_topic.topic.slug %}">{{ member_topic.topic.name }}</a>
-				</li>
-				{%empty%}
-				<h3>You are not a member of any topic groups yet</h3> {% endfor %}
-
-			</ul>
-		</div>
-	</div>
-	{% endif %}
-	<div class="card card-with-shadow">
-		<div class="content">
-			<h5 class="title">All topics</h5>
-			<ul class="list-unstyled">
-				{# {% get_other_topics as other_topics %}#} {% for other_topic in get_other_topics %}
-				<li class="topic li-with-bullet"><a href="{% url 'single_topic' slug=other_topic.slug %}">{{ other_topic.name }}</a></li>
-				{% endfor %}
-			</ul>
-
-
-
-
-		</div>
+	<div class="col-md-8">
+		{% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
+		<h4>No posts in your Suburb</h4> {% endfor %}
 	</div>
 </div>
-{% endblock %}
+{% endif %}
+<br><br><br>
+<br><br><br><br><br><br>
 <!--  -->
-{% block post_content %}
-<div class="col-md-8">
-	{% for post in post_list %} {% include "burbnews/_post.html" %} {% endfor %}
-</div>
 {% endblock %}

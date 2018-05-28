@@ -1,37 +1,44 @@
 {% extends "burbnews/topic_base.html" %} {% block pretopic %}
-<div class="col-md-4">
-  <div class="content">
-    {% if user.is_authenticated %}
-    <h2>
-			Welcome back
+<br>
+<div class="container jumbotron">
+  <div class="col-md-5" style="border-right:solid;">
+    <div class="content">
+      {% if user.is_authenticated %}
+      <h2>
 			<a href="{% url 'for_user' username=user.username %}">@{{user.username }}</a>
 		</h2> {% endif %}
-    <h2>Topics</h2>
+      <h2>Topics</h2>
 
-    <p>Welcome to the Topics Page! Select a Topic with a shared interest!</p>
+      <p>Welcome to the Topics Page! Select a Topic with a shared interest!</p>
+    </div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'create_topic' %}" class="btn btn-md btn-fill btn-info"><span class="glyphicon glyphicon-plus-sign"></span> Create New Topic!</a> {% endif %}
   </div>
-  {% if user.is_authenticated %}
-  <a href="{% url 'create_topic' %}" class="btn btn-md btn-fill btn-warning"><span class="glyphicon glyphicon-plus-sign"></span> Create New Topic!</a> {% endif %}
-</div>
-{% endblock %} {% block topic_content %}
-<div class="col-md-8">
-  <div class="list-topic">
-    {% for topic in object_list %}
-    <a class="list-topic-item" href="{% url 'single_topic' slug=topic.slug %}">
-      <h3 class="title list-topic-item-heading">{{ topic.name }}</h3>
-      <div class="list-topic-item-text container-fluid">
-        {{ topic.description_html|safe }}
-        <div class="row">
-          <div class="col-md-4">
-            <span class="badge">{{ topic.members.count }}</span> member{{ topic.members.count|pluralize }}
-          </div>
-          <div class="col-md-4">
-            <span class="badge">{{ topic.posts.count }}</span> post{{ topic.posts.count|pluralize }}
+  <div class="col-md-1"></div>
+  {% endblock %}
+  <!--  -->
+  {% block topic_content %}
+
+  <div class="col-md-6">
+    <div class="list-topic">
+      {% for topic in object_list %}
+      <a class="list-topic-item" href="{% url 'single_topic' slug=topic.slug %}">
+        <h3 class="title list-topic-item-heading">{{ topic.name }}</h3>
+        <div class="list-topic-item-text container-fluid">
+          {{ topic.description_html|safe }}
+          <div class="row">
+            <div class="col-md-4">
+              <span class="badge">{{ topic.members.count }}</span> member{{ topic.members.count|pluralize }}
+            </div>
+            <div class="col-md-4">
+              <span class="badge">{{ topic.posts.count }}</span> post{{ topic.posts.count|pluralize }}
+            </div>
           </div>
         </div>
-      </div>
-    </a>
-    {% endfor %}
+      </a>
+      {% endfor %}
+    </div>
   </div>
 </div>
-{% endblock %}
+<br><br><br><br>
+<br><br><br><br><br><br> {% endblock %}
