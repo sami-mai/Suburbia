@@ -2,4 +2,3 @@
 *.swp
 virtual/
 *.pyc
-.env
