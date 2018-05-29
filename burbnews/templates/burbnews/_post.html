@@ -1,9 +1,9 @@
 {% load static%}
-<div class="row">
+<div class="row well">
 	<div class="col-md-5">
 		{%if post.image %}
 		<a href="{% url 'single_post' username=post.user.username pk=post.pk %}">
-		<img src="{{post.image.url}}" alt="post image" style="width:250px; height:200px;"></a>
+		<img class="img-responsive img-thumbnail"src="{{post.image.url}}" alt="post image" style="width:250px; height:200px;"></a>
 		<!--  -->
 		{%else%}
 		<a href="{% url 'single_post' username=post.user.username pk=post.pk %}">
@@ -35,8 +35,9 @@
 							<span class="text-danger icon-label">Delete</span>
 						</a> {% endif %}
 				</div>
+
 			</div>
+
 		</div>
 	</div>
-
 </div>

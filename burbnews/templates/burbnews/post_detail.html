@@ -3,10 +3,21 @@
 
 <!--  -->
 {% block post_content %}
-<div class="container jumbotron">
+<br>
+<div class="container jumbotron" style="background-color:#B5A2EE;">
+  <div class="col-md-2"></div>
   <div class="col-md-8">
-    {% include "burbnews/_post.html" %}
+    <h2>{{topic.name}}</h2> {% if topic.posts.count == 0 %}
+    <div class="well">
+      <h3>No posts in {{topic.name}} yet!</h3>
+    </div>
+    {% else %}
+    <!--  -->
+    {% for post in topic.posts.all %} {% include "burbnews/_post.html" %} {% endfor %}
+    <!--  -->
+    {% endif %} {% include "burbnews/_post.html" %}
   </div>
+  <div class="col-md-2"></div>
 </div>
 <br><br><br><br><br><br><br>
 <br><br>

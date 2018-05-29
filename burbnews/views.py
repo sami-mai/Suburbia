@@ -124,15 +124,10 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    # form_class = forms.PostForm
     fields = ('topic', 'image', 'message')
     model = models.Post
-
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs.update({"user": self.request.user})
-    #     return kwargs
-
+    success_url = reverse_lazy("all_posts")
+    
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user

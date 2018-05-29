@@ -10,15 +10,15 @@
 				<!-- <h3>
 				<a href="{% url 'for_user' username=user.username %}">@{{user.username }}</a>
 			</h3> -->
-				<h2 class="title">Your Topics</h2>
-				<ul class="list-unstyled">
-					{# {% get_user_topics as user_topics %}#} {% for member_topic in get_user_topics %}
-					<li class="topic li-with-bullet">
-						<a href="{% url 'single_topic' slug=member_topic.topic.slug %}">{{ member_topic.topic.name }}</a>
-					</li>
+				<h2 class="title">Topics</h2>
 
+				<ul class="list-unstyled">
+					{% for topic in object_list %}
+					<a class="list-topic-item" href="#">
+						<h3 class="title list-topic-item-heading">{{ topic.name }}</h3></a>
 					<!--  -->
 					{% endfor %}
+
 
 				</ul>
 			</div>

@@ -3,11 +3,11 @@
   <div class="row">
 
     <div class="col-md-4">
-      <h1>{{topic.name}}</h1>
+      <h2>{{topic.name}}</h2>
       <div class="well">
         <!--  -->
         {%if topic.image%}
-        <img class="img-responsive img-thumbnail" style="width:300px; height:200px" src="{{topic.image}}" alt="topic image">
+        <img class="img-responsive img-thumbnail" style="width:300px; height:200px" src="{{topic.image.url}}" alt="topic image">
         <!--  -->
         {%else%}
         <img class="img-responsive img-thumbnail" style="width:300px; height:200px" src="{%static '/images/daily.jpg'%}" alt="default">
@@ -28,18 +28,18 @@
     {% block topic_content %}
 
     <div class="col-md-8" style="border-left:solid">
-      <h1>Posts in {{topic.name}} </h1>
+      <h2>Posts in {{topic.name}} </h2>
       <!--  -->
       {% if topic.posts.count == 0 %}
       <div class="well">
-        <h2 style="color:white;">No posts in this topic yet!</h2>
+        <h3>No posts in {{topic.name}} yet!</h3>
       </div>
       {% else %}
       <!--  -->
       {% for post in topic.posts.all %}
-      <div class="well">
-        {% include "burbnews/_post.html" %}
-      </div>
+      <!-- <div class="well"> -->
+      {% include "burbnews/_post.html" %}
+      <!-- </div> -->
       {% endfor %}
       <!--  -->
       {% endif %}
