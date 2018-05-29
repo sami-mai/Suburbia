@@ -1,17 +1,20 @@
 {% extends "burbnews/topic_base.html" %} {% load bootstrap3 %} {% block topic_content %}
 <div class="container">
+
   <div class="row">
     <div class="text-center">
       <h3 style="color:white;"><strong>Create A New Topic</strong></h3>
+      <br>
     </div>
-    <!-- <div class="col-md-1"></div> -->
     <div class="col-md-3"> {% include 'sidebar.html'%}</div>
     <div class="col-md-1"></div>
     <div class="col-md-7">
-      <form method="POST" action="{% url 'create_topic' %}" id="topicForm" style="color:white;">
-        {% csrf_token %} {% bootstrap_form form %}
-        <input type="submit" value="Post" class="btn btn-primary btn-large">
-      </form>
+      <div class="well">
+        <form method="POST" action="{% url 'create_topic' %}" id="topicForm" enctype="multipart/form-data">
+          {% csrf_token %} {% bootstrap_form form %}
+          <input type="submit" value="Post" class="btn btn-primary btn-large">
+        </form>
+      </div>
     </div>
     <div class="col-md-1"></div>
   </div>

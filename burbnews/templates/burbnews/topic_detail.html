@@ -1,25 +1,54 @@
-{% extends "burbnews/topic_base.html" %} {% block pretopic %}
+{% extends "burbnews/topic_base.html" %}{%load static%} {% block pretopic %}
+<div class="container jumbotron">
+  <div class="row">
 
-
-<h1 style="color:white;">{{topic.name}}</h1>
-<h2 style="color:white;"> Member Count: {{topic.members.count}}</h2>
-
-<div class="content">
-
-
-  {% if user in topic.members.all %}
+    <div class="col-md-4">
+      <h1>{{topic.name}}</h1>
+      <div class="well">
+        <!--  -->
+        {%if topic.image%}
+        <img class="img-responsive img-thumbnail" style="width:300px; height:200px" src="{{topic.image}}" alt="topic image">
+        <!--  -->
+        {%else%}
+        <img class="img-responsive img-thumbnail" style="width:300px; height:200px" src="{%static '/images/daily.jpg'%}" alt="default">
+        <!--  -->
+        {%endif%}
+        <div class="well">
+          <h3>{{topic.description_html|safe}}</h3>
+          <!-- <h2 style="color:white;"> Member Count: {{topic.members.count}}</h2> -->
+          <br>
+          <!-- {% if user in topic.members.all %}
   <a href="{% url 'leave_topic' slug=topic.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-remove-circle"></span> Leave</a> {% else %}
-  <a href="{% url 'join_topic' slug=topic.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> Join</a> {% endif %}
+  <a href="{% url 'join_topic' slug=topic.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> Join</a> {% endif %} -->
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    <!--  -->
+    {% block topic_content %}
 
+    <div class="col-md-8" style="border-left:solid">
+      <h1>Posts in {{topic.name}} </h1>
+      <!--  -->
+      {% if topic.posts.count == 0 %}
+      <div class="well">
+        <h2 style="color:white;">No posts in this topic yet!</h2>
+      </div>
+      {% else %}
+      <!--  -->
+      {% for post in topic.posts.all %}
+      <div class="well">
+        {% include "burbnews/_post.html" %}
+      </div>
+      {% endfor %}
+      <!--  -->
+      {% endif %}
 
-
+    </div>
+  </div>
 </div>
 
-{% endblock %} {% block topic_content %}
-
-<div class="col-md-8">
-  {% if topic.posts.count == 0 %}
-  <h2 style="color:white;">No posts in this topic yet!</h2> {% else %} {% for post in topic.posts.all %} {% include "burbnews/_post.html" %} {% endfor %} {% endif %}
-</div>
+<br><br><br><br><br><br>
 <br><br><br><br><br>
-<br><br><br><br><br><br> {% endblock %}
+<!--  -->
+{% endblock %}

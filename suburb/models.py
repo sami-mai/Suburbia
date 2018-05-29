@@ -19,13 +19,6 @@ class Suburb(models.Model):
     def __str__(self):
         return self.name
 
-    # Create Resident Suburb when creating a User
-    # @receiver(post_save, sender=User)
-    # def create_user_suburb(sender, instance, created, **kwargs):
-    #     if created:
-    #         Suburb.objects.create(user=instance)
-    #     instance.suburb.save()
-
 
 class Resident(models.Model):
     user = models.OneToOneField(User, related_name='resident', null=True)

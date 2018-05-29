@@ -40,7 +40,7 @@
               </div>
               <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                  <form action="{%url 'edit_profile' request.user.id%}" method="post">
+                  <form action="{%url 'edit_profile' request.user.id%}" method="post" enctype="multipart/form-data">
                     {%csrf_token%}
                     <!--  -->
                     {% bootstrap_form resident_form layout='inline' %}

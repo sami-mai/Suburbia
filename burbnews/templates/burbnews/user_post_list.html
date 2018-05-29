@@ -1,18 +1,31 @@
-{% extends "burbnews/post_base.html" %}
+{% extends "burbnews/post_base.html" %}{%load static%}
 <!--  -->
 {% block prepost %}
 <br>
 <div class="container jumbotron">
-	<div class="col-md-4" style="border-right:solid;">
+	<div class="col-md-4">
 
 		{% if user.is_authenticated %}
 		<h2>
 			<a href="{% url 'for_user' username=user.username %}">@{{user.username }}</a>
-		</h2> {% endif %}
+		</h2>
+		<!--  -->
+		{%if user.resident%}
+		<img class="img-responsive img-circle" src="{{user.resident.avatar.url}}" alt="resident avatar" style="width:150px; height:150px;">
+		<!--  -->
+		{%else%}
+		<!--  -->
+		<img class="img-responsive img-circle" src="{% static '/images/defaultdp.jpg'%}" alt="avatar" style="width:150px; height:150px;">
+		<!--  -->
+		{% endif %}
+		<!--  -->
+		{% endif %}
 	</div>
-
-	{% endblock %} {% block post_content %}
-	<div class="col-md-8">
+	<!--  -->
+	{% endblock %}
+	<!--  -->
+	{% block post_content %}
+	<div class="col-md-8" style="border-left:solid;">
 		<h3>Post History</h3> {% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
 		<p>You have no posts</p>
 		{% endfor %}

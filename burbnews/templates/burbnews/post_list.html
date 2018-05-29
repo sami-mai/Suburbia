@@ -3,7 +3,7 @@
 {% block prepost %}
 <br>
 <div class="container jumbotron">
-	<div class="col-md-4" style="border-right:solid;">
+	<div class="col-md-4">
 		{% if request.user.is_authenticated %}
 		<div class="card card-with-shadow">
 			<div class="content">
@@ -41,10 +41,15 @@
 	<!--  -->
 	{% block post_content %}
 	<!--  -->
-	{% if request.user.is_authenticated %}
-	<div class="col-md-8">
-		{% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
-		<h4>No posts in your Suburb</h4> {% endfor %}
+
+	<div class="col-md-8" style="border-left:solid;">
+		{% if request.user.is_authenticated %}
+		<h3>All Posts</h3>
+		<div class="well">
+			{% for post in post_list %} {% include "burbnews/_post.html" %} {%empty%}
+			<h4>No posts in your Suburb</h4> {% endfor %}
+		</div>
+
 	</div>
 </div>
 {% endif %}

@@ -12,6 +12,7 @@ User = get_user_model()
 class Topic(models.Model):
     name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
+    image = models.ImageField(upload_to='topic_image/', blank=True, null=True)
     description = models.TextField(blank=True, default='')
     description_html = models.TextField(editable=False, default='', blank=True)
     members = models.ManyToManyField(User, through="TopicMember")

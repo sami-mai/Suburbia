@@ -8,10 +8,12 @@
 		<div class="col-md-3"> {% include 'sidebar.html'%}</div>
 		<div class="col-md-1"></div>
 		<div class="col-md-7">
-			<form method="POST" action="{% url 'create_post' %}" id="postForm" style="color:white;">
-				{% csrf_token %} {% bootstrap_form form %}
-				<input type="submit" value="Post" class="btn btn-primary btn-large">
-			</form>
+			<div class="well">
+				<form method="POST" action="{% url 'create_post' %}" id="postForm" enctype="multipart/form-data">
+					{% csrf_token %} {% bootstrap_form form %}
+					<input type="submit" value="Post" class="btn btn-primary btn-large">
+				</form>
+			</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>

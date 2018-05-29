@@ -27,7 +27,7 @@ User = get_user_model()
 
 
 class CreateTopic(LoginRequiredMixin, generic.CreateView):
-    fields = ("name", "description")
+    fields = ("name", "image", "description")
     model = Topic
 
 

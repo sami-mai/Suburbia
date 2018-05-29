@@ -1,7 +1,7 @@
 {% extends "burbnews/topic_base.html" %} {% block pretopic %}
 <br>
 <div class="container jumbotron">
-  <div class="col-md-5" style="border-right:solid;">
+  <div class="col-md-5">
     <div class="content">
       {% if user.is_authenticated %}
       <h2>
@@ -9,33 +9,35 @@
 		</h2> {% endif %}
       <h2>Topics</h2>
 
-      <p>Welcome to the Topics Page! Select a Topic with a shared interest!</p>
+      <p>Welcome to the Topics Page! <br>Select a Topic with a shared interest!</p>
     </div>
     {% if user.is_authenticated %}
     <a href="{% url 'create_topic' %}" class="btn btn-md btn-fill btn-info"><span class="glyphicon glyphicon-plus-sign"></span> Create New Topic!</a> {% endif %}
   </div>
-  <div class="col-md-1"></div>
+  <!-- <div class="col-md-1"></div> -->
   {% endblock %}
   <!--  -->
   {% block topic_content %}
 
-  <div class="col-md-6">
+  <div class="col-md-7" style="border-left:solid;">
     <div class="list-topic">
       {% for topic in object_list %}
-      <a class="list-topic-item" href="{% url 'single_topic' slug=topic.slug %}">
-        <h3 class="title list-topic-item-heading">{{ topic.name }}</h3>
+      <div class="well">
+        <a class="list-topic-item" href="{% url 'single_topic' slug=topic.slug %}">
+          <h3 class="title list-topic-item-heading">{{ topic.name }}</h3></a>
         <div class="list-topic-item-text container-fluid">
           {{ topic.description_html|safe }}
           <div class="row">
-            <div class="col-md-4">
-              <span class="badge">{{ topic.members.count }}</span> member{{ topic.members.count|pluralize }}
-            </div>
+            <!-- <div class="col-md-4"> -->
+            <!-- <span class="badge">{{ topic.members.count }}</span> member{{ topic.members.count|pluralize }} -->
+            <!-- </div> -->
             <div class="col-md-4">
               <span class="badge">{{ topic.posts.count }}</span> post{{ topic.posts.count|pluralize }}
             </div>
           </div>
         </div>
-      </a>
+      </div>
+      <!--  -->
       {% endfor %}
     </div>
   </div>
