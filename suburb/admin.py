@@ -23,3 +23,4 @@ class SuburbAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Suburb, SuburbAdmin)
+admin.site.register(models.Resident)

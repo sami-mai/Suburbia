@@ -7,4 +7,5 @@ class TopicMemberInline(admin.TabularInline):
 
 
 admin.site.register(models.Topic)
+admin.site.register(models.TopicMember)
 admin.site.register(models.Post)
