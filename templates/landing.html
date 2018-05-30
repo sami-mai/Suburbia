@@ -9,7 +9,9 @@
     {%if user.resident%}
     <h1>Suburbia Media!</h1>
     <br>
-    <h3 class="text-muted">The best medium for all things Suburbia!</h3>
+    <h1>Welcome {{user.username|title}} to Suburbia Media!</h1>
+    <h2 class="text-muted">The best medium for all things Suburbia!</h2>
+    <a href="{% url 'edit_profile' request.user.id%}" class="btn btn-primary">Start here</a>
     <!--  -->
     {%else%}
     <h1>Welcome {{user.username|title}} to Suburbia Media!</h1>
