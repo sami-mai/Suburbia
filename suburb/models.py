@@ -17,7 +17,7 @@ class Suburb(models.Model):
     latitude = models.DecimalField(max_digits=11, decimal_places=8, null=True)
 
     def __str__(self):
-        return self.name
+        return self.suburb_name
 
 
 class Resident(models.Model):

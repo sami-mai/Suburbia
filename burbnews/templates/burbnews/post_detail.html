@@ -10,6 +10,7 @@
     <h2>{{topic.name}}</h2> {% if topic.posts.count == 0 %}
     <div class="well">
       <h3>No posts in {{topic.name}} yet!</h3>
+      <a class="btn btn-info" href="{% url 'create_post' %}">Add a Post</a>
     </div>
     {% else %}
     <!--  -->
